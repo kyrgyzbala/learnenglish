@@ -12,6 +12,8 @@ import com.english.onlineenglishteacher.databinding.FragmentPhoneConfirmationBin
 import com.english.onlineenglishteacher.ui.login.register.RegisterActivity
 import com.english.onlineenglishteacher.ui.main.MainActivity
 import com.english.onlineenglishteacher.util.EXTRA_CODE_SENT_PWD
+import com.english.onlineenglishteacher.util.hideKeyboard
+import com.english.onlineenglishteacher.util.show
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
@@ -49,6 +51,8 @@ class PhoneConfirmationFragment : Fragment() {
         binding.buttonConfirmCodeLogin.setOnClickListener {
 
             if (checkInput()) {
+                hideKeyboard()
+                binding.prBarCodeConfirmLogin.show()
                 val credential = PhoneAuthProvider.getCredential(
                     codeSent!!,
                     binding.codeEditTextLogin.text.toString()
@@ -64,7 +68,7 @@ class PhoneConfirmationFragment : Fragment() {
             if (it.isSuccessful) {
                 FirebaseFirestore.getInstance().collection("users").document(firebaseAuth.currentUser!!.uid).get()
                     .addOnSuccessListener {ds->
-                        if (ds.exists() && ds.getBoolean("isProfileDone") != null) {
+                        if (ds.exists() ) {
                             val intent = Intent(requireContext(), MainActivity::class.java)
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                             requireActivity().finish()

@@ -13,6 +13,7 @@ import com.english.onlineenglishteacher.databinding.FragmentLoginBinding
 import com.english.onlineenglishteacher.ui.login.register.RegisterActivity
 import com.english.onlineenglishteacher.util.EXTRA_CODE_SENT_PWD
 import com.english.onlineenglishteacher.util.hide
+import com.english.onlineenglishteacher.util.hideKeyboard
 import com.english.onlineenglishteacher.util.show
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
@@ -77,6 +78,7 @@ class LoginFragment : Fragment() {
             if (binding.editTextPhoneLogin.text.toString().isEmpty()){
                 binding.phoneErrorLogin.visibility = View.VISIBLE
             } else {
+                hideKeyboard()
                 binding.prBarLogin.show()
                 PhoneAuthProvider.getInstance().verifyPhoneNumber(
                     binding.ccpLogin.fullNumberWithPlus,

@@ -49,8 +49,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:layout_margin="22dp"
-                    android:outlineAmbientShadowColor="#03A9F4"
-                    android:outlineSpotShadowColor="#03A9F4"
                     app:cardCornerRadius="6dp"
                     app:cardElevation="6dp"
                     tools:targetApi="p">
@@ -71,12 +69,11 @@
                             android:id="@+id/userName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
+                            android:layout_marginStart="22dp"
                             android:layout_marginTop="14dp"
                             android:layout_marginEnd="12dp"
                             android:layout_toEndOf="@+id/profileLogo"
                             android:fontFamily="@font/roboto_medium"
-                            android:gravity="center"
                             android:textSize="19sp"
                             tools:text="UserName" />
 
