@@ -41,4 +41,7 @@
     <string name="chat">Chat</string>
     <string name="saved">Video</string>
     <string name="profile">Profile</string>
+    <string name="welcome2">Welcome to English Online Teacher App</string>
+    <string name="displayName">Display name</string>
+    <string name="edit_profile">Edit Profile</string>
 </resources>

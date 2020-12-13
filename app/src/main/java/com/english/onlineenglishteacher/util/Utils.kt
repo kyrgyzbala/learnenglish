@@ -16,6 +16,7 @@ import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
 import java.util.*
 
+const val CHOOSE_IMAGE_REQUEST = 121
 
 const val EXTRA_CODE_SENT_PWD = "EXTRA_CODE_SENT_PWD"
 const val EXTRA_MODEL_TOKEN = "EXTRA_MODEL_TOKEN"

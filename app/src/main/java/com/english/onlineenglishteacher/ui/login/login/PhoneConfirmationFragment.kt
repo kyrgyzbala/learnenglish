@@ -10,10 +10,12 @@ import android.view.ViewGroup
 import com.english.onlineenglishteacher.R
 import com.english.onlineenglishteacher.databinding.FragmentPhoneConfirmationBinding
 import com.english.onlineenglishteacher.ui.login.register.RegisterActivity
+import com.english.onlineenglishteacher.ui.main.MainActivity
 import com.english.onlineenglishteacher.util.EXTRA_CODE_SENT_PWD
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class PhoneConfirmationFragment : Fragment() {
@@ -60,10 +62,20 @@ class PhoneConfirmationFragment : Fragment() {
         val firebaseAuth = FirebaseAuth.getInstance()
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
-                val intent = Intent(requireContext(), RegisterActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                requireActivity().finish()
-                startActivity(intent)
+                FirebaseFirestore.getInstance().collection("users").document(firebaseAuth.currentUser!!.uid).get()
+                    .addOnSuccessListener {ds->
+                        if (ds.exists() && ds.getBoolean("isProfileDone") != null) {
+                            val intent = Intent(requireContext(), MainActivity::class.java)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                            requireActivity().finish()
+                            startActivity(intent)
+                        } else {
+                            val intent = Intent(requireContext(), RegisterActivity::class.java)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                            requireActivity().finish()
+                            startActivity(intent)
+                        }
+                    }
             } else {
                 binding.codeErrorLogin.visibility = View.VISIBLE
                 binding.codeErrorLogin.text = getString(R.string.wrongCode)

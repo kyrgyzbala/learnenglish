@@ -7,6 +7,127 @@
     android:background="@color/colorWhite"
     tools:context=".ui.login.register.RegisterActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/nextButton"
+        android:layout_marginBottom="12dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/arrBackRegister"
+                android:layout_width="52dp"
+                android:layout_height="56dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_arrow_back_dark" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textViewWelcome2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/arrBackRegister"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:text="@string/welcome2"
+                android:textSize="16sp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/logoBusinessRegisterCardView"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_below="@+id/textViewWelcome2"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/colorWhite"
+                app:cardCornerRadius="55dp"
+                app:cardElevation="6dp">
+
+                <ImageView
+                    android:id="@+id/imgViewLogoRegisterBusiness"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/imgViewAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_baseline_add_a_photo_24" />
+
+                <ProgressBar
+                    android:id="@+id/prBarImgLoading"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
+            </androidx.cardview.widget.CardView>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nameTextInputRegister2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logoBusinessRegisterCardView"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="26sp"
+                android:background="@color/transparent">
+
+                <EditText
+                    android:id="@+id/nameEditTextRegister2"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:background="@color/colorWhite"
+                    android:drawableEnd="@drawable/ic_baseline_person_24"
+                    android:hint="@string/displayName"
+                    android:inputType="textPersonName"
+                    android:maxLength="100"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="12sp"
+                    android:textSize="18sp"
+                    tools:ignore="TextFields" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="0.7dp"
+                android:layout_below="@+id/nameTextInputRegister2"
+                android:layout_marginStart="32sp"
+                android:layout_marginEnd="24dp"
+                android:background="#3B73D0" />
+
+            <TextView
+                android:id="@+id/nameErrorReg2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view1"
+                android:layout_marginStart="32sp"
+                android:layout_marginTop="2dp"
+                android:text="@string/requiredField"
+                android:textColor="#EA0808"
+                android:textSize="10sp"
+                android:visibility="gone"
+                tools:ignore="SmallSp" />
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
     <TextView
         android:id="@+id/nextButton"
         android:layout_width="match_parent"
