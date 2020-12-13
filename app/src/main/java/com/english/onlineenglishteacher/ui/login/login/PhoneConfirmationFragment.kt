@@ -1,5 +1,6 @@
 package com.english.onlineenglishteacher.ui.login.login
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -69,6 +70,9 @@ class PhoneConfirmationFragment : Fragment() {
                 FirebaseFirestore.getInstance().collection("users").document(firebaseAuth.currentUser!!.uid).get()
                     .addOnSuccessListener {ds->
                         if (ds.exists() ) {
+                            val edit = requireActivity().getSharedPreferences("USER", Context.MODE_PRIVATE).edit()
+                            edit.putString("ISLOGGEDIN", "DONE")
+                            edit.apply()
                             val intent = Intent(requireContext(), MainActivity::class.java)
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                             requireActivity().finish()
