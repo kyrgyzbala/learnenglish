@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".ui.login.login.LoginFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+
+        <ImageView
+            android:id="@+id/imgViewLogoLogin"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="82dp"
+            android:layout_marginEnd="52dp"
+            android:src="@drawable/english" />
+
+        <TextView
+            android:id="@+id/textViewWelcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgViewLogoLogin"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:gravity="center"
+            android:text="@string/welcometext1"
+            android:textColor="@color/textColorDark"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:id="@+id/linearLogin2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewWelcome"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32sp"
+            android:layout_marginEnd="22sp"
+            android:orientation="horizontal">
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/ccpLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22sp"
+                app:ccp_defaultPhoneCode="90"
+                app:ccp_showFlag="true"
+                app:ccp_showNameCode="false" />
+
+            <EditText
+                android:id="@+id/editTextPhoneLogin"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_gravity="bottom"
+                android:background="@color/colorWhite"
+                android:drawableEnd="@drawable/ic_baseline_phone_24"
+                android:gravity="center_vertical"
+                android:hint="@string/phoneNumber"
+                android:inputType="phone"
+                android:paddingStart="0dp"
+                android:paddingTop="6dp"
+                android:paddingEnd="12sp"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_below="@+id/linearLogin2"
+            android:layout_marginStart="32sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:background="#3B73D0" />
+
+        <TextView
+            android:id="@+id/phoneErrorLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view1"
+            android:layout_marginStart="32sp"
+            android:layout_marginTop="2dp"
+            android:text="@string/requiredField"
+            android:textColor="#EA0808"
+            android:textSize="10sp"
+            android:visibility="gone"
+            tools:ignore="SmallSp" />
+
+        <Button
+            android:id="@+id/buttonSignInLogin"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/view1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="32sp"
+            android:layout_marginTop="32sp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/back_button_blue"
+            android:text="@string/login"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/prBarLogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:background="#4D03A9F4"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textMessageLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pBar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="12sp"
+            android:text="@string/loading"
+            android:textColor="@color/colorAccent"
+            android:textSize="23sp" />
+
+        <ProgressBar
+            android:id="@+id/pBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp" />
+
+    </RelativeLayout>
+</RelativeLayout>

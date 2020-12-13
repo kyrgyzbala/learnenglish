@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".ui.login.login.PhoneConfirmationFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/arrBackCodeConfirmationLogin"
+            android:layout_width="52dp"
+            android:layout_height="?attr/actionBarSize">
+
+            <ImageView
+                android:layout_width="26sp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="12sp"
+                android:src="@drawable/ic_arrow_back_dark" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/titleTextViewCodeConfirmationLogin"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginEnd="52dp"
+            android:layout_toEndOf="@+id/arrBackCodeConfirmationLogin"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:text="@string/confirmPhone"
+            android:textColor="@color/textColorDark"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/instructionLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleTextViewCodeConfirmationLogin"
+            android:layout_marginStart="32sp"
+            android:layout_marginTop="14sp"
+            android:layout_marginEnd="32sp"
+            android:gravity="center"
+            android:text="@string/codeSentText"
+            android:textSize="16sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/codeTextInputLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/instructionLogin"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="16sp"
+            android:layout_marginEnd="26sp"
+            android:background="@color/transparent">
+
+            <EditText
+                android:id="@+id/codeEditTextLogin"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@color/colorWhite"
+                android:drawableEnd="@drawable/ic_baseline_check_circle_out"
+                android:hint="@string/verificationCode"
+                android:inputType="number"
+                android:paddingStart="0dp"
+                android:paddingEnd="12sp"
+                android:textSize="18sp"
+                tools:ignore="TextFields" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_below="@+id/codeTextInputLogin"
+            android:layout_marginStart="32sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:background="#3B73D0" />
+
+        <TextView
+            android:id="@+id/codeErrorLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view1"
+            android:layout_marginStart="32sp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="32sp"
+            android:text="@string/requiredField"
+            android:textColor="#EA0808"
+            android:textSize="10sp"
+            android:visibility="gone"
+            tools:ignore="SmallSp" />
+
+        <Button
+            android:id="@+id/buttonConfirmCodeLogin"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/view1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="32sp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/back_button_blue"
+            android:fontFamily="@font/roboto"
+            android:text="@string/verify"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/prBarCodeConfirmLogin"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="32sp"
+        android:layout_marginTop="120dp"
+        android:background="#4503A9F4"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pBar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="12sp"
+            android:text="@string/loading"
+            android:textColor="@color/colorAccent"
+            android:textSize="23sp" />
+
+        <ProgressBar
+            android:id="@+id/pBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

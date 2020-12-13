@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">LearnEnglish</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="phoneNumber">Phone number</string>
+    <string name="requiredField">Required field!</string>
+    <string name="login">Login</string>
+    <string name="welcometext1">Welcome English learning online! Please enter your phone number to register or sign in</string>
+    <string name="confirmPhone">Phone Confirmation</string>
+    <string name="codeSentText">Enter the code that has been sent to your phone number</string>
+    <string name="verificationCode">Code confirmation</string>
+    <string name="verify">Verify</string>
+    <string name="loading">Loading …</string>
+
+    <string name="y">y</string>
+    <string name="m">mon</string>
+    <string name="d">d</string>
+    <string name="h">h</string>
+    <string name="min">min</string>
+    <string name="s">sec</string>
+
+    <string name="yesterday">Yesterday</string>
+    <string name="jan">Jan</string>
+    <string name="dec">Dec</string>
+    <string name="nov">Nov</string>
+    <string name="oct">Oct</string>
+    <string name="sep">Sep</string>
+    <string name="aug">Aug</string>
+    <string name="july">July</string>
+    <string name="june">June</string>
+    <string name="may">May</string>
+    <string name="apr">Apr</string>
+    <string name="march">Mart</string>
+    <string name="feb">Feb</string>
+    <string name="ddMMyyyy">dd.MM.yyyy</string>
+    <string name="today">Today</string>
+    <string name="wrongCode">Wrong confirmation code</string>
+    <string name="next">Next</string>
+    <string name="home">Home</string>
+    <string name="quiz">Quiz</string>
+    <string name="chat">Chat</string>
+    <string name="saved">Video</string>
+    <string name="profile">Profile</string>
+</resources>
