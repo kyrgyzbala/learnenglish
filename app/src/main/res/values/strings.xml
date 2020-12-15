@@ -47,4 +47,7 @@
     <string name="learning_portal">Learning Portal</string>
     <string name="videoLessons">Video Lessons</string>
     <string name="lectureNotes">Reading and Notes</string>
+    <string name="quizzes">Quizzes</string>
+    <string name="teachers">Teachers</string>
+    <string name="chatEmpty">Chat is Empty \n Choose any teacher to ask questions</string>
 </resources>
