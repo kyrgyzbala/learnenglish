@@ -1,16 +1,19 @@
 package com.english.onlineenglishteacher.ui.chat.util
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.english.onlineenglishteacher.R
 import com.english.onlineenglishteacher.databinding.RowTeacherBinding
 import com.english.onlineenglishteacher.ui.login.register.ModelUser
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 
 class TeachersRecyclerViewAdapter(
-    options: FirestoreRecyclerOptions<ModelUser>
+    options: FirestoreRecyclerOptions<ModelUser>,
+    private val listener: TeacherClickListener
 ) : FirestoreRecyclerAdapter<ModelUser, TeachersRecyclerViewAdapter.ViewHolderT>(options) {
 
     private var _binding: RowTeacherBinding? = null
@@ -22,8 +25,23 @@ class TeachersRecyclerViewAdapter(
             if (!modelUser.logo.isNullOrEmpty())
                 Glide.with(binding.root).load(modelUser.logo).into(binding.logoImageView)
             binding.teacherName.text = modelUser.name
+            if (modelUser.status == "online") {
+                binding.statusTextView.text = binding.root.context.getString(R.string.online)
+                binding.statusTextView.setTextColor(Color.parseColor("#03A9F4"))
+            } else {
+                binding.statusTextView.text = binding.root.context.getString(R.string.offline)
+                binding.statusTextView.setTextColor(Color.parseColor("#68696A"))
+            }
+            binding.root.setOnClickListener {
+                listener.onTeacherClick(modelUser)
+            }
+
         }
 
+    }
+
+    interface TeacherClickListener {
+        fun onTeacherClick(model: ModelUser)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderT {

@@ -3,16 +3,35 @@ package com.english.onlineenglishteacher.ui.login.register;
 public class ModelUser {
 
     private String name;
+    private String uid;
     private String logo;
     private Boolean isProfileDone;
+    private String status;
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public ModelUser() {
     }
 
-    public ModelUser(String name, String logo, Boolean isProfileDone) {
+    public ModelUser(String name, String logo, Boolean isProfileDone, String uid) {
         this.name = name;
         this.logo = logo;
         this.isProfileDone = isProfileDone;
+        this.uid = uid;
     }
 
     public String getName() {

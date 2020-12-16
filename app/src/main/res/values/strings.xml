@@ -50,4 +50,10 @@
     <string name="quizzes">Quizzes</string>
     <string name="teachers">Teachers</string>
     <string name="chatEmpty">Chat is Empty \n Choose any teacher to ask questions</string>
+    <string name="internetErrorMessage">Error loading user data and chat! Please try again!</string>
+    <string name="send_message_hint">Type here ...</string>
+    <string name="ago">ago</string>
+    <string name="online">Online</string>
+    <string name="offline">Offline</string>
+    <string name="errorTryAgain">Error! Please try again!</string>
 </resources>
