@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".ui.test.QuizActualActivity"></activity>
+        <activity android:name=".ui.test.QuizResultActivity"></activity>
+        <activity android:name=".ui.test.QuizActualActivity" />
         <activity android:name=".ui.test.QuizByLevelActivity" />
         <activity android:name=".ui.chat.PrivateChatActivity" />
         <activity android:name=".ui.video.VideosActivity" />

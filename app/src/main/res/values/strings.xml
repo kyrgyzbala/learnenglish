@@ -61,4 +61,6 @@
     <string name="slash">/</string>
     <string name="prev">Previous</string>
     <string name="variant_a">Variant A</string>
+    <string name="quiz_result">Your Result</string>
+    <string name="ok">OK</string>
 </resources>

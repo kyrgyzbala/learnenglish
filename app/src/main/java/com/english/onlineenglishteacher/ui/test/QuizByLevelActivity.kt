@@ -22,6 +22,8 @@ class QuizByLevelActivity : AppCompatActivity(), QuizzesRecyclerViewAdapter.Quiz
 
     private var adapter: QuizzesRecyclerViewAdapter? = null
 
+    private var level: ModelLevel? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuizByLevelBinding.inflate(layoutInflater)
@@ -29,15 +31,21 @@ class QuizByLevelActivity : AppCompatActivity(), QuizzesRecyclerViewAdapter.Quiz
 
         window.statusBarColor = Color.WHITE
 
-        val level = intent.getSerializableExtra(EXTRA_LEVEL) as ModelLevel
+        level = intent.getSerializableExtra(EXTRA_LEVEL) as ModelLevel
 
         binding.arrBackQuiz.setOnClickListener {
             onBackPressed()
         }
 
-        binding.textViewTitle.text = level.name
+        binding.textViewTitle.text = level!!.name
 
-        initRecyclerView(level.code)
+        initRecyclerView(level!!.code)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (level != null)
+            initRecyclerView(level!!.code)
     }
 
     private fun initRecyclerView(code: Int) {
