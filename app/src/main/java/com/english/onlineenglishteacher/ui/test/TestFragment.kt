@@ -1,5 +1,6 @@
 package com.english.onlineenglishteacher.ui.test
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import com.english.onlineenglishteacher.R
 import com.english.onlineenglishteacher.databinding.FragmentTestBinding
 import com.english.onlineenglishteacher.ui.home.ModelLevel
 import com.english.onlineenglishteacher.ui.home.util.LevelRecyclerView
+import com.english.onlineenglishteacher.util.EXTRA_LEVEL
 import com.english.onlineenglishteacher.util.toast
 
 
@@ -51,7 +53,10 @@ class TestFragment : Fragment(), LevelRecyclerView.LevelClickListener {
     }
 
     override fun onLevelClick(position: Int) {
-        requireActivity().toast("clicked $position")
+        val level = adapter.getItemAt(position)
+        val intent = Intent(requireContext(), QuizByLevelActivity::class.java)
+        intent.putExtra(EXTRA_LEVEL, level)
+        startActivity(intent)
     }
 
 }

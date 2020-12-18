@@ -32,7 +32,7 @@ class VideosActivity : AppCompatActivity() {
 
         level = intent.getSerializableExtra(EXTRA_LEVEL) as ModelLevel
 
-        binding.levelTextView.text = level?.name
+        binding.textViewTitle.text = level?.name
 
     }
 

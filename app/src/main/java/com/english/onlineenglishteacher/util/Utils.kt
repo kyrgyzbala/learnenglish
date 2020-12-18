@@ -22,6 +22,8 @@ const val EXTRA_CODE_SENT_PWD = "EXTRA_CODE_SENT_PWD"
 const val EXTRA_MODEL_TOKEN = "EXTRA_MODEL_TOKEN"
 const val EXTRA_LEVEL = "EXTRA_LEVEL"
 const val EXTRA_TEACHER_ID = "EXTRA_TEACHER_ID"
+const val EXTRA_QUIZ_REF = "EXTRA_QUIZ_REF"
+const val EXTRA_QUIZ_MODEL = "EXTRA_QUIZ_MODEL"
 
 fun Context.toast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="14dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="8dp"
+    android:elevation="6dp"
+    android:padding="8dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="6dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/textViewTitleTest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/loading"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/textColorDark"
+            android:textSize="21sp" />
+
+        <ImageView
+            android:id="@+id/checkMark"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_done"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textViewQuestionsTextList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewTitleTest"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="4dp"
+            android:layout_toEndOf="@+id/textViewQuestionCountList"
+            android:text="@string/questions_"
+            android:textColor="@color/textColorDark"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textViewQuestionCountList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewTitleTest"
+            android:layout_marginStart="16sp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="3dp"
+            android:text="@string/_1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/textColorDark"
+            android:textSize="18sp"
+            android:textStyle="normal" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

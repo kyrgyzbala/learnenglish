@@ -70,4 +70,16 @@ public class ModelChat {
     public void setLastMessageRead(boolean lastMessageRead) {
         this.lastMessageRead = lastMessageRead;
     }
+
+    @Override
+    public String toString() {
+        return "ModelChat{" +
+                "userId='" + userId + '\'' +
+                ", teacherId='" + teacherId + '\'' +
+                ", lastMessage='" + lastMessage + '\'' +
+                ", lastMessageSender='" + lastMessageSender + '\'' +
+                ", lastMessageTime=" + lastMessageTime +
+                ", lastMessageRead=" + lastMessageRead +
+                '}';
+    }
 }

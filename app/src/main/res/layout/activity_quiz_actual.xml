@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".ui.test.QuizActualActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarQuiz"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorWhite">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/arrBackQuiz"
+                android:layout_width="52dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_arrow_back_dark" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="12dp"
+                android:fontFamily="@font/amarante"
+                android:gravity="center_vertical"
+                android:text="@string/quizzes"
+                android:textSize="22sp" />
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appBarQuiz"
+        android:background="#ffffff">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff">
+
+            <ProgressBar
+                android:id="@+id/progressBarTest"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/testPassed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/progressBarTest"
+                android:layout_marginStart="16dp"
+                android:text="@string/_1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#C4C4C4"
+                android:textSize="21sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/slashTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/progressBarTest"
+                android:layout_marginStart="0dp"
+                android:layout_toEndOf="@+id/testPassed"
+                android:text="@string/slash"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#C4C4C4"
+                android:textSize="21sp" />
+
+            <TextView
+                android:id="@+id/questionCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/progressBarTest"
+                android:layout_marginStart="2dp"
+                android:layout_toEndOf="@+id/slashTest"
+                android:text="@string/_1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#C4C4C4"
+                android:textSize="21sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/questionTextViewTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/questionCount"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/questions_"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/textColorDark"
+                android:textSize="21sp" />
+
+            <TextView
+                android:id="@+id/buttonVariantA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/questionTextViewTest"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="#00FFFFFF"
+                android:gravity="center_vertical"
+                android:padding="22dp"
+                android:text="@string/variant_a"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/buttonVariantA"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/buttonVariantB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buttonVariantA"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="#00FFFFFF"
+                android:gravity="center_vertical"
+                android:padding="22dp"
+                android:text="@string/variant_a"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/buttonVariantB"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/buttonVariantC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buttonVariantB"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="#00FFFFFF"
+                android:gravity="center_vertical"
+                android:padding="22dp"
+                android:text="@string/variant_a"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/buttonVariantC"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/buttonVariantD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buttonVariantC"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="#00FFFFFF"
+                android:gravity="center_vertical"
+                android:padding="22dp"
+                android:text="@string/variant_a"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/buttonVariantD"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/prevTest"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/buttonVariantD"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="44dp"
+                android:background="@drawable/back_edit"
+                android:gravity="center"
+                android:text="@string/prev"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/textColorDark"
+                android:textSize="20sp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/buttonVariantD"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="22dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <TextView
+                    android:id="@+id/nextTest"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/back_button_blue"
+                    android:gravity="center"
+                    android:text="@string/next"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/correctAnswerTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card"
+                android:layout_margin="32dp"
+                android:padding="4dp"
+                android:rotation="180"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="23sp" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#51FFFFFF">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

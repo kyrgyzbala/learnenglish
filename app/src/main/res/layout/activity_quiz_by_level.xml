@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    tools:context=".ui.video.VideosActivity">
+    tools:context=".ui.test.QuizByLevelActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarVideos"
+        android:id="@+id/appBarQuiz"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorWhite">
@@ -18,7 +18,7 @@
             android:layout_height="match_parent">
 
             <RelativeLayout
-                android:id="@+id/arrBackTypes"
+                android:id="@+id/arrBackQuiz"
                 android:layout_width="52dp"
                 android:layout_height="match_parent">
 
@@ -39,7 +39,7 @@
                 android:layout_marginEnd="12dp"
                 android:fontFamily="@font/amarante"
                 android:gravity="center_vertical"
-                android:text="@string/videoLessons"
+                android:text="@string/quizzes"
                 android:textSize="22sp" />
 
             <TextView
@@ -50,21 +50,20 @@
                 android:layout_marginStart="53dp"
                 android:layout_marginEnd="22sp"
                 android:fontFamily="@font/amarante"
-                android:text="@string/videoLessons"
+                android:text="@string/quizzes"
                 android:textColor="@color/colorPrimary"
                 android:textSize="13sp" />
         </RelativeLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewVideos"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/appBarVideos"
-        android:layout_marginTop="8dp"
+        android:layout_below="@+id/appBarQuiz"
+        android:layout_marginTop="2dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/row_videos" />
+        tools:listitem="@layout/row_quizzes" />
 
 </RelativeLayout>
