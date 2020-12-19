@@ -26,6 +26,7 @@ const val EXTRA_QUIZ_REF = "EXTRA_QUIZ_REF"
 const val EXTRA_QUIZ_MODEL = "EXTRA_QUIZ_MODEL"
 const val EXTRA_QUIZ_RESULT = "EXTRA_QUIZ_RESULT"
 const val EXTRA_COUNT = "EXTRA_COUNT"
+const val EXTRA_NOTE_MODEL = "EXTRA_NOTE_MODEL"
 
 fun Context.toast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()

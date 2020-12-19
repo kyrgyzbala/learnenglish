@@ -62,6 +62,7 @@ class RegisterActivity : AppCompatActivity() {
         val request = UserProfileChangeRequest.Builder().setDisplayName(displayName).build()
         user.updateProfile(request)
         val model = ModelUser(displayName, loadedImg, true, user.uid)
+        model.phoneNumber = user.phoneNumber
         FirebaseFirestore.getInstance().collection("users").document(user.uid)
             .set(model, SetOptions.merge())
             .addOnSuccessListener {

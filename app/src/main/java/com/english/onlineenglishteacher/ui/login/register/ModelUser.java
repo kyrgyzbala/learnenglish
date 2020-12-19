@@ -7,6 +7,15 @@ public class ModelUser {
     private String logo;
     private Boolean isProfileDone;
     private String status;
+    private String phoneNumber;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public String getUid() {
         return uid;
