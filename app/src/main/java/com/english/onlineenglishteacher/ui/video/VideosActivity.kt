@@ -46,10 +46,14 @@ class VideosActivity : AppCompatActivity() {
         adapter?.stopListening()
     }
 
+    /**
+     * @Function
+     * inits query, creates adapter for recyclerView
+     * sets adapter for recyclerView
+     */
     private fun initRecyclerView() {
 
         val lifecycle = lifecycle
-
         val db = FirebaseFirestore.getInstance()
         val query = db.collection("videos").whereEqualTo("level", level!!.code)
             .orderBy("date", Query.Direction.DESCENDING)

@@ -13,14 +13,19 @@ import com.english.onlineenglishteacher.ui.home.util.LevelRecyclerView
 import com.english.onlineenglishteacher.util.EXTRA_LEVEL
 import com.english.onlineenglishteacher.util.toast
 
+/**
+ * @Fragment for list of Levels for quizzes
+ */
 
 class TestFragment : Fragment(), LevelRecyclerView.LevelClickListener {
 
     private var _binding: FragmentTestBinding? = null
     private val binding: FragmentTestBinding get() = _binding!!
 
+    /**
+     * Initializing variables
+     */
     private var levels = mutableListOf<ModelLevel>()
-
     private lateinit var adapter: LevelRecyclerView
 
     override fun onCreateView(
@@ -35,12 +40,16 @@ class TestFragment : Fragment(), LevelRecyclerView.LevelClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         generateLevels()
+        //setting levelRecyclerViewAdapter for recyclerView
         binding.recyclerViewQuiz.setHasFixedSize(true)
         adapter = LevelRecyclerView(this)
         binding.recyclerViewQuiz.adapter = adapter
         adapter.submitList(levels)
     }
 
+    /**
+     * @Function that generates list of levels
+     */
     private fun generateLevels() {
         levels = mutableListOf(
             ModelLevel(1, "Beginner Level", R.drawable.absbeginner),
@@ -52,8 +61,12 @@ class TestFragment : Fragment(), LevelRecyclerView.LevelClickListener {
         )
     }
 
+    /**
+     * @Function that handles onLevel Click
+     */
     override fun onLevelClick(position: Int) {
         val level = adapter.getItemAt(position)
+        //On level click, it will open quizzesActivity on selected level
         val intent = Intent(requireContext(), QuizByLevelActivity::class.java)
         intent.putExtra(EXTRA_LEVEL, level)
         startActivity(intent)

@@ -22,6 +22,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import java.util.*
 
+/**
+ * @Fragment
+ * viewing list of teachers with their status
+ */
 
 class TeachersFragment : Fragment(), TeachersRecyclerViewAdapter.TeacherClickListener {
 
@@ -44,6 +48,11 @@ class TeachersFragment : Fragment(), TeachersRecyclerViewAdapter.TeacherClickLis
 
     }
 
+    /**
+     * @Function
+     * initializing @Query for recyclerView,
+     * creating an Adapter and setting adapter for recyclerView
+     */
     private fun initRecyclerView() {
         val db = FirebaseFirestore.getInstance()
         val ref = db.collection("teachers")
@@ -67,6 +76,9 @@ class TeachersFragment : Fragment(), TeachersRecyclerViewAdapter.TeacherClickLis
         adapter?.stopListening()
     }
 
+    /**
+     * @Function handles teacher click
+     */
     override fun onTeacherClick(model: ModelUser) {
         val user = FirebaseAuth.getInstance().currentUser!!
         val reff = user.uid + model.uid
@@ -75,8 +87,10 @@ class TeachersFragment : Fragment(), TeachersRecyclerViewAdapter.TeacherClickLis
         ref.get().addOnCompleteListener {
             if (it.isSuccessful) {
                 if (it.result.exists()) {
+                    //if chat exists, open chat
                     goToChat(model.uid)
                 } else {
+                    //if chat does not exist with this teacher, create chat
                     createNewChat(ref, user.uid, model.uid)
                 }
             } else {
@@ -85,6 +99,10 @@ class TeachersFragment : Fragment(), TeachersRecyclerViewAdapter.TeacherClickLis
         }
     }
 
+    /**
+     * @Function
+     * Creates new with selected teacher
+     */
     private fun createNewChat(ref: DocumentReference, userId: String, teacherId: String?) {
         val modelChat = ModelChat(
             userId, teacherId, "Chat created", userId, Timestamp(Date()), false
@@ -99,6 +117,9 @@ class TeachersFragment : Fragment(), TeachersRecyclerViewAdapter.TeacherClickLis
         }
     }
 
+    /**
+     * @Function, opens PrivateChatActivity with selected teacher
+     */
     private fun goToChat(uid: String?) {
         Log.d("NURIKO", "goToChat: $uid")
         val intent = Intent(requireContext(), PrivateChatActivity::class.java)

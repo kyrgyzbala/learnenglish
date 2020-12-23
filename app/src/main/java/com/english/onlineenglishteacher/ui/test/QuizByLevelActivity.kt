@@ -16,12 +16,15 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 
+/**
+ * @Activity to handle list of quizzes
+ */
+
 class QuizByLevelActivity : AppCompatActivity(), QuizzesRecyclerViewAdapter.QuizClickListener {
 
     private lateinit var binding: ActivityQuizByLevelBinding
 
     private var adapter: QuizzesRecyclerViewAdapter? = null
-
     private var level: ModelLevel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +53,9 @@ class QuizByLevelActivity : AppCompatActivity(), QuizzesRecyclerViewAdapter.Quiz
 
     private fun initRecyclerView(code: Int) {
         binding.recyclerView.setHasFixedSize(true)
-
+        /**
+         * Initializing recyclerView and recyclerViewAdapter According to the level
+         */
         val query = FirebaseFirestore.getInstance().collection("quizzes")
             .whereEqualTo("level", code)
             .orderBy("date", Query.Direction.DESCENDING)
@@ -59,7 +64,7 @@ class QuizByLevelActivity : AppCompatActivity(), QuizzesRecyclerViewAdapter.Quiz
                 .build()
         adapter = QuizzesRecyclerViewAdapter(options, this)
         binding.recyclerView.adapter = adapter
-
+        //Start listening for live changes
         adapter?.startListening()
     }
 
@@ -68,9 +73,13 @@ class QuizByLevelActivity : AppCompatActivity(), QuizzesRecyclerViewAdapter.Quiz
         adapter?.stopListening()
     }
 
+    /**
+     * @Function to handle quiz click
+     */
     override fun onQuizClick(modelQuiz: ModelQuiz, position: Int) {
         toast("Clicked ${modelQuiz.name}")
         val ref = adapter!!.snapshots.getSnapshot(position).reference.path
+        //opens selectedQuiz
         val intent = Intent(this, QuizActualActivity::class.java)
         intent.putExtra(EXTRA_QUIZ_REF, ref)
         intent.putExtra(EXTRA_QUIZ_MODEL, modelQuiz)

@@ -40,27 +40,12 @@ fun RelativeLayout.hide() {
     visibility = View.GONE
 }
 
-fun View.showRegSnackBar(message: String) {
-    Snackbar.make(this, message, Snackbar.LENGTH_LONG).setTextColor(Color.WHITE).show()
-}
-
 fun ProgressBar.show() {
     visibility = View.VISIBLE
 }
 
 fun ProgressBar.hide() {
     visibility = View.GONE
-}
-
-fun Activity.freezeScreen() {
-    window.setFlags(
-        WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-        WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-    )
-}
-
-fun Activity.removeFreezeScreen() {
-    window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
 }
 
 fun Fragment.hideKeyboard() {
@@ -77,6 +62,24 @@ fun Context.hideKeyboard(view: View) {
     val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 }
+
+fun Activity.freezeScreen() {
+    window.setFlags(
+        WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+        WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+    )
+}
+
+fun View.showRegSnackBar(message: String) {
+    Snackbar.make(this, message, Snackbar.LENGTH_LONG).setTextColor(Color.WHITE).show()
+}
+
+
+fun Activity.removeFreezeScreen() {
+    window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+}
+
+
 
 fun getDateToday(context: Context, date: String, type: Int): String {
 

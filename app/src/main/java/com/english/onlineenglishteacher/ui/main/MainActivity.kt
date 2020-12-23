@@ -23,6 +23,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
         window.statusBarColor = Color.WHITE
 
+        /**
+         * setting pager Adapter for ViewPager2, and setting listener for BottomNavigationView
+         */
         binding.navBottomView.setOnNavigationItemSelectedListener(this)
         sectionPagerAdapter = MainPagerAdapter(this)
         binding.viewPager.adapter = sectionPagerAdapter
@@ -32,6 +35,11 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     }
 
     private fun viewPagerListener() {
+
+        /**
+         * Handling page/fragment change via view pager
+         */
+
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageScrollStateChanged(state: Int) {
             }
@@ -43,6 +51,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             ) {
             }
 
+            /**
+             * Setting up fragments according to positions selected
+             */
             override fun onPageSelected(position: Int) {
                 when (position) {
                     0 -> {
@@ -67,6 +78,10 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+
+        /**
+         * Setting up fragments according to positions selected
+         */
         binding.viewPager.currentItem = when (item.itemId) {
             R.id.home -> {
                 0

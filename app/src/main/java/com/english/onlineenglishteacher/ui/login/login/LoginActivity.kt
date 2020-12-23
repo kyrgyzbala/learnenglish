@@ -14,6 +14,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //Changes status bar color to white
         window.statusBarColor = Color.WHITE
 
     }

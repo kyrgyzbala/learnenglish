@@ -41,8 +41,12 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //registered editText for phone code picker
         binding.ccpLogin.registerCarrierNumberEditText(binding.editTextPhoneLogin)
 
+        /**
+         * Initializing phone authentication callback
+         */
         mCallbacksClient = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(authCredential: PhoneAuthCredential) {
                 binding.prBarLogin.hide()
@@ -54,6 +58,9 @@ class LoginFragment : Fragment() {
                 Log.d("LoginFragment", "onVerificationFailed: ${p0.message}")
             }
 
+            /**
+             * On successful code send, phone confirmation will open
+             */
             override fun onCodeSent(
                 s: String,
                 resendingToken: PhoneAuthProvider.ForceResendingToken
@@ -65,7 +72,6 @@ class LoginFragment : Fragment() {
                 }
                 mResendingTokenClient = resendingToken
                 val bundle = Bundle()
-                Log.d("ForgotPasswordFragment", "onCodeSent (line 143): $s what")
                 bundle.putString(EXTRA_CODE_SENT_PWD, s)
                 findNavController().navigate(
                     R.id.action_loginFragment_to_phoneConfirmationFragment,
@@ -74,6 +80,9 @@ class LoginFragment : Fragment() {
             }
         }
 
+        /**
+         * On login button click, checks if all required fields are filled, then calls phone auth provider with entered phone number
+         */
         binding.buttonSignInLogin.setOnClickListener {
             if (binding.editTextPhoneLogin.text.toString().isEmpty()){
                 binding.phoneErrorLogin.visibility = View.VISIBLE

@@ -21,6 +21,9 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
+        /**
+         * Makes screen FULL
+         */
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
         } else {
@@ -36,6 +39,13 @@ class SplashScreenActivity : AppCompatActivity() {
         }
 
     }
+
+    /**
+     * Waits for 2 seconds
+     * Checks If user logged in or not
+     * if user was authenticated already, @MainActivity will open
+     * if not @LoginActivity will open
+     */
 
     private suspend fun delayFor() {
         delay(2000)

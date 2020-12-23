@@ -13,6 +13,10 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstan
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 
+/**
+ * @RecyclerViewAdapter for list of videos
+ */
+
 class VideosRecyclerView(
     options: FirestoreRecyclerOptions<ModelVideo>,
     private val lifecycle: Lifecycle
@@ -32,6 +36,8 @@ class VideosRecyclerView(
             youtubePlayerView.visibility = View.VISIBLE
             binding.playButton.visibility = View.GONE
 
+            //adding video control listener for current video
+            //loading video
 
             youtubePlayerView.addYouTubePlayerListener(object :
                 AbstractYouTubePlayerListener() {
@@ -52,8 +58,8 @@ class VideosRecyclerView(
 
                 override fun onReady(youTubePlayer: YouTubePlayer) {
                     val id = getYoutube(modelVideo.link)
+                    //play video on video ready and play button pressed
                     youTubePlayer.cueVideo(id, 0F)
-
                 }
             })
 
@@ -61,6 +67,10 @@ class VideosRecyclerView(
 
         }
 
+        /**
+         * @Function
+         * gets YouTube video ID from video URL
+         */
         private fun getYoutube(url: String): String {
             if (url.contains("watch")) {
                 var ret = ""

@@ -15,6 +15,10 @@ import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * @RecyclerViewAdapter for recyclerView for list of chats
+ */
+
 class ChatListRecyclerViewAdapter(
     options: FirestoreRecyclerOptions<ModelChat>,
     private val listener: ChatListClickListener
@@ -31,6 +35,9 @@ class ChatListRecyclerViewAdapter(
 
             listener.sizeNotZero()
 
+            /**
+             * Setting up UI according to current ModelChat
+             */
             getUserLogoAndName(modelChat.teacherId)
             val messageText = if (modelChat.lastMessage.length < 28)
                 modelChat.lastMessage
@@ -62,6 +69,10 @@ class ChatListRecyclerViewAdapter(
             }
         }
 
+        /**
+         * @Function
+         * gets teacherName and logo according to teacherId
+         */
         private fun getUserLogoAndName(teacherId: String?) {
 
             if (teacherId != null) {
@@ -83,6 +94,7 @@ class ChatListRecyclerViewAdapter(
 
     }
 
+    //Inflating view for recyclerView row
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderChat {
         _binding = RowChatListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolderChat(_binding!!)
@@ -92,6 +104,9 @@ class ChatListRecyclerViewAdapter(
         holder.onBind(model)
     }
 
+    /**
+     * @Interface to handle chat clicks/changes
+     */
     interface ChatListClickListener {
         fun onChatClick(teacherId: String)
         fun sizeNotZero()

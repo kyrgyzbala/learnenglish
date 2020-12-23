@@ -14,15 +14,21 @@ import com.english.onlineenglishteacher.util.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
+
+/**
+ * @Activity to handle actual quiz/test
+ */
+
 class QuizActualActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityQuizActualBinding
 
+    /**
+     * Initializing variables
+     */
     private var refPath: String? = ""
     private val questions = mutableListOf<ModelQ>()
-
     private var index = 0
-
     private var progressRange = 1
     private var resultScore: Int = 0
 
@@ -35,17 +41,21 @@ class QuizActualActivity : AppCompatActivity() {
         refPath = intent.getStringExtra(EXTRA_QUIZ_REF)
         binding.textViewTitle.text = quiz.name
 
+        //progress range init
         progressRange = 100 / quiz.questions
         binding.progressBarTest.progress = progressRange
+        //called loadQuestions function
         loadQuestions()
         binding.questionCount.text = quiz.questions.toString()
 
+        //setting next button click
         binding.nextTest.setOnClickListener {
             if (index < (quiz.questions - 1)) {
                 index++
                 binding.progressBarTest.progress += progressRange
                 initUI()
             } else {
+                //if it was last question and pressed next button, opens ResultActivity
                 val intent = Intent(this, QuizResultActivity::class.java)
                 intent.putExtra(EXTRA_QUIZ_REF, refPath)
                 intent.putExtra(EXTRA_QUIZ_RESULT, resultScore)
@@ -65,6 +75,9 @@ class QuizActualActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Initializing and setting up UI according to changes
+     */
     private fun initUI() {
         if (index == 0)
             binding.prevTest.visibility = View.GONE
@@ -84,7 +97,9 @@ class QuizActualActivity : AppCompatActivity() {
         binding.buttonVariantC.text = textC
         binding.buttonVariantD.text = textD
 
+        //check if this question was answered before
         if (questions[index].isAnswered != -1) {
+
             if (questions[index].isAnswered == questions[index].answer) {
                 //Answered correctly
                 showCorrectAnswer()
@@ -110,6 +125,7 @@ class QuizActualActivity : AppCompatActivity() {
                     }
                 }
             }
+
         } else {
 
             binding.buttonVariantA.setBackgroundColor(Color.WHITE)
@@ -128,6 +144,9 @@ class QuizActualActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * @Function to show correct answer/variant
+     */
     private fun showCorrectAnswer() {
         when (questions[index].answer) {
             1 -> {
@@ -187,6 +206,9 @@ class QuizActualActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * @Function that loads questions list according to the quiz id
+     */
     private fun loadQuestions() {
         FirebaseFirestore.getInstance().document(refPath!!).collection("questions").get()
             .addOnCompleteListener {
@@ -200,6 +222,7 @@ class QuizActualActivity : AppCompatActivity() {
                         val varD = s.getString("varD")
                         val answer = s.getLong("answer")?.toInt()
                         val q = ModelQ(question, varA, varB, varC, varD, answer!!)
+                        //adding questions to the list
                         questions.add(q)
                     }
                     binding.progressBar.hide()
@@ -209,7 +232,13 @@ class QuizActualActivity : AppCompatActivity() {
             }
     }
 
+    /**
+     * @Function
+     * setting listeners for variant clicks
+     * handling answers
+     */
     private fun addAnswerListeners() {
+
         binding.buttonVariantA.setOnClickListener {
             if (questions[index].isAnswered == -1) {
                 questions[index].isAnswered = 1

@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:targetApi="n">
-        <activity android:name=".ui.home.ViewNoteActivity"></activity>
+        <activity android:name=".ui.home.ViewNoteActivity" />
         <activity android:name=".ui.home.NotesActivity" />
         <activity android:name=".ui.test.QuizResultActivity" />
         <activity android:name=".ui.test.QuizActualActivity" />

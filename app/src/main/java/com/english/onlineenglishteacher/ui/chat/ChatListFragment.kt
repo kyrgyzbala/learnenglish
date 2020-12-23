@@ -17,6 +17,10 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 
+/**
+ * @Fragment
+ * Handles list of chats
+ */
 
 class ChatListFragment : Fragment(), ChatListRecyclerViewAdapter.ChatListClickListener {
 
@@ -40,9 +44,13 @@ class ChatListFragment : Fragment(), ChatListRecyclerViewAdapter.ChatListClickLi
             initRecyclerView(user)
     }
 
+    /**
+     * @Function
+     * Initializes query, creates adapter for recyclerView
+     * Sets adapter to recyclerView
+     */
     private fun initRecyclerView(user: FirebaseUser) {
         binding.recyclerView.setHasFixedSize(true)
-
         val query =
             FirebaseFirestore.getInstance().collection("chats").whereEqualTo("userId", user.uid)
                 .orderBy("lastMessageTime", Query.Direction.DESCENDING)
@@ -59,12 +67,19 @@ class ChatListFragment : Fragment(), ChatListRecyclerViewAdapter.ChatListClickLi
         adapter?.stopListening()
     }
 
+    /**
+     * @Function
+     * Opens privateChat of selected chat
+     */
     override fun onChatClick(teacherId: String) {
         val intent = Intent(requireContext(), PrivateChatActivity::class.java)
         intent.putExtra(EXTRA_TEACHER_ID, teacherId)
         startActivity(intent)
     }
 
+    /**
+     * Says that list is not empty and hides textView that says chat is empty
+     */
     override fun sizeNotZero() {
         binding.chatEmptyTextView.visibility = View.GONE
     }

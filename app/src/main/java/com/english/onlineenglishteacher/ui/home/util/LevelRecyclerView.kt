@@ -9,12 +9,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.english.onlineenglishteacher.databinding.RowLevelsBinding
 import com.english.onlineenglishteacher.ui.home.ModelLevel
 
+/**
+ * RecyclerViewAdapter for list of levels
+ */
 class LevelRecyclerView(
     private val listener: LevelClickListener
 ) : ListAdapter<ModelLevel, LevelRecyclerView.ViewHolderL>(DIFF) {
 
     private var _binding: RowLevelsBinding? = null
 
+    /**
+     * @Function to get Item at given position
+     */
     fun getItemAt(position: Int): ModelLevel {
         return getItem(position)
     }
@@ -24,6 +30,9 @@ class LevelRecyclerView(
 
         fun onBind(position: Int) {
             val current = getItemAt(position)
+            /**
+             * Sets view according to current ModelLevel
+             */
             binding.textView.text = current.name
             binding.imageView.setImageDrawable(
                 ContextCompat.getDrawable(
@@ -31,7 +40,9 @@ class LevelRecyclerView(
                     current.icon
                 )
             )
-
+            /**
+             * set clickListener for level click
+             */
             binding.root.setOnClickListener {
                 listener.onLevelClick(position)
             }

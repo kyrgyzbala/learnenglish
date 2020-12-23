@@ -26,6 +26,9 @@ class RegisterActivity : AppCompatActivity() {
     private var loadedImg = ""
 
 
+    /**
+     * on Activity View Created
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
@@ -50,12 +53,19 @@ class RegisterActivity : AppCompatActivity() {
                     binding.nameErrorReg2.visibility = View.VISIBLE
                 }
                 else -> {
+                    /**
+                     * If everything is OK, register new user
+                     */
                     registerNewUser()
                 }
             }
         }
     }
 
+    /**
+     * @Function that sets userName and userProfilePhoto, and registers new user
+     * All data will be saved to the server in users collection
+     */
     private fun registerNewUser() {
         val user = FirebaseAuth.getInstance().currentUser!!
         val displayName = binding.nameEditTextRegister2.text.toString()
@@ -67,6 +77,9 @@ class RegisterActivity : AppCompatActivity() {
             .set(model, SetOptions.merge())
             .addOnSuccessListener {
                 toast("Welcome $displayName")
+                /**
+                 * If user registered successfully, goToMain() will be called
+                 */
                 goToMain()
             }
             .addOnFailureListener {
@@ -74,6 +87,9 @@ class RegisterActivity : AppCompatActivity() {
             }
     }
 
+    /**
+     * @Function that opens image chooser from library
+     */
     private fun openImageChooser() {
         val intent = Intent().apply {
             type = "image/*"
@@ -91,6 +107,10 @@ class RegisterActivity : AppCompatActivity() {
         ) {
             val uri = data.data
             if (uri != null) {
+                /**
+                 * If image/photo has been selected, it will be uploaded to storage,
+                 * the link will be saved
+                 */
                 binding.imgViewLogoRegisterBusiness.visibility = View.VISIBLE
                 binding.imgViewAdd.visibility = View.GONE
                 binding.imgViewLogoRegisterBusiness.setImageURI(uri)
@@ -108,6 +128,9 @@ class RegisterActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    /**
+     * @Function saved userLoggedIn, opens MainActivity
+     */
     private fun goToMain() {
         val edit = getSharedPreferences("USER", Context.MODE_PRIVATE).edit()
         edit.putString("ISLOGGEDIN", "DONE")

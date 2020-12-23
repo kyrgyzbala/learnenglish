@@ -7,6 +7,10 @@ import com.english.onlineenglishteacher.databinding.RowNotesBinding
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 
+
+/**
+ * RecyclerViewAdapter for topic list
+ */
 class NotesRecyclerViewAdapter(
     options: FirestoreRecyclerOptions<ModelNote>,
     private val listener: NotesClickListener
@@ -19,8 +23,10 @@ class NotesRecyclerViewAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun onBind(modelNote: ModelNote) {
+            //setting topicName
             binding.topicName.text = modelNote.topic
 
+            //setting clickListener
             binding.root.setOnClickListener {
                 listener.onClickNote(modelNote)
             }

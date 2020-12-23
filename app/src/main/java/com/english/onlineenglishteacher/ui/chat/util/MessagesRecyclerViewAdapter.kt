@@ -18,6 +18,10 @@ import com.google.firebase.firestore.SetOptions
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * @RecyclerViewAdapter for messages
+ */
+
 class MessagesRecyclerViewAdapter(
     options: FirestoreRecyclerOptions<ModelMessage>,
     private val chatRef: String
@@ -36,6 +40,10 @@ class MessagesRecyclerViewAdapter(
                 handleReceived(modelMessage)
         }
 
+        /**
+         * @Function
+         * views message as received message
+         */
         private fun handleReceived(modelMessage: ModelMessage) {
             binding.messageReceivedRelative.show()
             binding.messageSentRelative.hide()
@@ -46,6 +54,10 @@ class MessagesRecyclerViewAdapter(
             binding.timeReceivedMessage.text = date
         }
 
+        /**
+         * @Function
+         * updates last message read
+         */
         private fun updateIsRead() {
             val snapshot = snapshots.getSnapshot(adapterPosition)
             val map = mutableMapOf<String, Any>()
@@ -60,6 +72,10 @@ class MessagesRecyclerViewAdapter(
             }
         }
 
+        /**
+         * @Function
+         * views message as sent message
+         */
         private fun handleSelf(modelMessage: ModelMessage) {
             binding.messageReceivedRelative.hide()
             binding.messageSentRelative.show()
@@ -76,6 +92,10 @@ class MessagesRecyclerViewAdapter(
             binding.timeSentMessage.text = date
         }
 
+        /**
+         * @Function
+         * gets formatted date to show
+         */
         private fun getDateToShow(date: Date): String {
             val sdf = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ROOT)
             val dateTimeStr = sdf.format(date)

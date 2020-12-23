@@ -15,11 +15,16 @@ import com.english.onlineenglishteacher.util.toast
 
 class HomeFragment : Fragment(), LevelRecyclerView.LevelClickListener {
 
+    /**
+     * Initializing ViewBinding
+     */
     private var _binding: FragmentHomeBinding? = null
     private val binding: FragmentHomeBinding get() = _binding!!
 
+    /**
+     * Initializing variables
+     */
     private var levels = mutableListOf<ModelLevel>()
-
     private lateinit var adapter: LevelRecyclerView
 
     override fun onCreateView(
@@ -34,12 +39,18 @@ class HomeFragment : Fragment(), LevelRecyclerView.LevelClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         generateLevels()
+        /**
+         * Creating and setting recyclerViewAdapter for recyclerViewHome
+         */
         binding.recyclerViewHome.setHasFixedSize(true)
         adapter = LevelRecyclerView(this)
         binding.recyclerViewHome.adapter = adapter
         adapter.submitList(levels)
     }
 
+    /**
+     * @Function to generate list of levels
+     */
     private fun generateLevels() {
         levels = mutableListOf(
             ModelLevel(1, "Beginner Level", R.drawable.absbeginner),
@@ -51,6 +62,10 @@ class HomeFragment : Fragment(), LevelRecyclerView.LevelClickListener {
         )
     }
 
+    /**
+     * Function to handle level click from list
+     * Opens NotesActivity and sends level as EXTRA argument for intent
+     */
     override fun onLevelClick(position: Int) {
         val level = adapter.getItemAt(position)
         val intent = Intent(requireContext(), NotesActivity::class.java)

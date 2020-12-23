@@ -19,7 +19,6 @@ class NotesActivity : AppCompatActivity(), NotesRecyclerViewAdapter.NotesClickLi
 
 
     private var level: ModelLevel? = null
-
     private var adapter: NotesRecyclerViewAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,19 +49,32 @@ class NotesActivity : AppCompatActivity(), NotesRecyclerViewAdapter.NotesClickLi
         initRecyclerView(level!!.code)
     }
 
+    /**
+     * @Function initializing RecyclerView
+     */
     private fun initRecyclerView(code: Int) {
         binding.recyclerView.setHasFixedSize(true)
+        /**
+         * @Query for notes by level and with sorting option "new notes on top"
+         */
         val query = FirebaseFirestore.getInstance().collection("notes")
             .whereEqualTo("level", code)
             .orderBy("date", Query.Direction.DESCENDING)
         val options: FirestoreRecyclerOptions<ModelNote> =
             FirestoreRecyclerOptions.Builder<ModelNote>().setQuery(query, ModelNote::class.java)
                 .build()
+        /**
+         * Creating and setting recyclerViewAdapter
+         */
         adapter = NotesRecyclerViewAdapter(options, this)
         binding.recyclerView.adapter = adapter
         adapter?.startListening()
     }
 
+    /**
+     * @Function handles topic click
+     * Opens note full,  according to selected topic
+     */
     override fun onClickNote(modelNote: ModelNote) {
         val intent = Intent(this, ViewNoteActivity::class.java)
         intent.putExtra(EXTRA_NOTE_MODEL, modelNote)

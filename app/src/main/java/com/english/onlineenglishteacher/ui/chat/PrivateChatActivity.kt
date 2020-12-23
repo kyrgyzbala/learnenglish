@@ -25,6 +25,11 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.SetOptions
 import java.util.*
 
+/**
+ * @Activity
+ * Handles private chat between teacher and student
+ */
+
 class PrivateChatActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPrivateChatBinding
@@ -69,11 +74,17 @@ class PrivateChatActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * @Function
+     * handles sending new messages
+     */
     private fun sendNewMessage(user: FirebaseUser) {
+        //creating new message Object
         val modelMessage = ModelMessage(
             binding.messageEditText.text.toString(),
             user.uid, teacherId, user.displayName, Timestamp(Date()), false
         )
+        //sending new message
         val ref = db.collection("chats").document(user.uid + teacherId)
         ref.collection("messages").add(modelMessage).addOnSuccessListener {
             binding.messageEditText.setText("")
@@ -82,6 +93,7 @@ class PrivateChatActivity : AppCompatActivity() {
             binding.recyclerViewPrivateChat.smoothScrollToPosition(0)
         }
 
+        //updating lastMessageInfo about this chat
         val map = mutableMapOf<String, Any>()
         map["lastMessage"] = modelMessage.message
         map["lastMessageSender"] = modelMessage.sender
@@ -92,6 +104,10 @@ class PrivateChatActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Listen for editTextChanges for messageEditText
+     * and changes Send button's alpha/transparency according to that
+     */
     private fun addListener() {
         binding.messageEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -100,6 +116,8 @@ class PrivateChatActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (binding.messageEditText.text.toString().isNotEmpty())
                     binding.sendMessageButton.alpha = 1F
+                else
+                    binding.sendMessageButton.alpha = 0.4F
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -113,6 +131,10 @@ class PrivateChatActivity : AppCompatActivity() {
         adapter?.stopListening()
     }
 
+    /**
+     * @Function
+     * Loads list of messages
+     */
     private fun initRecyclerView(user: FirebaseUser) {
         val ref = user.uid + teacherId
         val docRef = FirebaseFirestore.getInstance().collection("chats").document(ref)
@@ -155,7 +177,10 @@ class PrivateChatActivity : AppCompatActivity() {
 
     }
 
-
+    /**
+     * @Function
+     * Gets Teacher info and views it
+     */
     private fun initTeacherData() {
         db.collection("teachers").document(teacherId).get().addOnSuccessListener {
             if (it.exists()) {

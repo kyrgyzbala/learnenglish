@@ -11,6 +11,10 @@ import com.english.onlineenglishteacher.ui.login.register.ModelUser
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 
+/**
+ * RecyclerViewAdapter to handle ListOfTeachers
+ */
+
 class TeachersRecyclerViewAdapter(
     options: FirestoreRecyclerOptions<ModelUser>,
     private val listener: TeacherClickListener
@@ -22,6 +26,7 @@ class TeachersRecyclerViewAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun onBind(modelUser: ModelUser) {
+            //setting up the view according to current ModelUser
             if (!modelUser.logo.isNullOrEmpty())
                 Glide.with(binding.root).load(modelUser.logo).into(binding.logoImageView)
             binding.teacherName.text = modelUser.name
@@ -45,6 +50,7 @@ class TeachersRecyclerViewAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderT {
+        //inflating view for row of list
         _binding = RowTeacherBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolderT(_binding!!)
     }

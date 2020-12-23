@@ -13,6 +13,10 @@ import com.english.onlineenglishteacher.ui.home.util.LevelRecyclerView
 import com.english.onlineenglishteacher.util.EXTRA_LEVEL
 import com.english.onlineenglishteacher.util.toast
 
+/**
+ * @Fragment
+ * Handles VideoLevels list
+ */
 
 class VideoFragment : Fragment(), LevelRecyclerView.LevelClickListener {
 
@@ -35,6 +39,7 @@ class VideoFragment : Fragment(), LevelRecyclerView.LevelClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         generateLevels()
+        //creating adapter and setting recyclerViewAdapter for recyclerViewLevelList
         binding.recyclerViewHome.setHasFixedSize(true)
         adapter = LevelRecyclerView(this)
         binding.recyclerViewHome.adapter = adapter
@@ -42,6 +47,10 @@ class VideoFragment : Fragment(), LevelRecyclerView.LevelClickListener {
 
     }
 
+    /**
+     * @Function
+     * Generates list of levels
+     */
     private fun generateLevels() {
         levels = mutableListOf(
             ModelLevel(1, "Beginner Level", R.drawable.absbeginner),
@@ -53,6 +62,10 @@ class VideoFragment : Fragment(), LevelRecyclerView.LevelClickListener {
         )
     }
 
+    /**
+     * handles level click
+     * opens list of videos according to selected level
+     */
     override fun onLevelClick(position: Int) {
         val level = adapter.getItemAt(position)
         val intent = Intent(requireContext(), VideosActivity::class.java)

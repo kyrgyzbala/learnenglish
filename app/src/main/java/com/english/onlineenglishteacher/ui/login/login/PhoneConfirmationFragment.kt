@@ -28,7 +28,6 @@ class PhoneConfirmationFragment : Fragment() {
 
     private var codeSent: String? = null
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,6 +39,9 @@ class PhoneConfirmationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        /**
+         * Setting arrBack Click
+         */
         binding.arrBackCodeConfirmationLogin.setOnClickListener {
             val intent = Intent(requireContext(), RegisterActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -49,6 +51,9 @@ class PhoneConfirmationFragment : Fragment() {
 
         codeSent = arguments?.getString(EXTRA_CODE_SENT_PWD, "")
 
+        /**
+         * on confirm button click, checks code and call signIn function
+         */
         binding.buttonConfirmCodeLogin.setOnClickListener {
 
             if (checkInput()) {
@@ -63,6 +68,9 @@ class PhoneConfirmationFragment : Fragment() {
         }
     }
 
+    /**
+     * Sign in function with PhoneAuthCredential
+     */
     private fun signInWithCredentials(credential: PhoneAuthCredential) {
         val firebaseAuth = FirebaseAuth.getInstance()
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
@@ -70,6 +78,9 @@ class PhoneConfirmationFragment : Fragment() {
                 FirebaseFirestore.getInstance().collection("users").document(firebaseAuth.currentUser!!.uid).get()
                     .addOnSuccessListener {ds->
                         if (ds.exists() ) {
+                            /**
+                             * If user has been registered already, main activity will open
+                             */
                             val edit = requireActivity().getSharedPreferences("USER", Context.MODE_PRIVATE).edit()
                             edit.putString("ISLOGGEDIN", "DONE")
                             edit.apply()
@@ -78,6 +89,9 @@ class PhoneConfirmationFragment : Fragment() {
                             requireActivity().finish()
                             startActivity(intent)
                         } else {
+                            /**
+                             * if user does not exist, Register Activity will open
+                             */
                             val intent = Intent(requireContext(), RegisterActivity::class.java)
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                             requireActivity().finish()
@@ -92,6 +106,9 @@ class PhoneConfirmationFragment : Fragment() {
         }
     }
 
+    /**
+     * @Function to check if code was entered
+     */
     private fun checkInput(): Boolean {
         if (binding.codeEditTextLogin.text.toString().isEmpty()) {
             binding.codeErrorLogin.visibility = View.VISIBLE
